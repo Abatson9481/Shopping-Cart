@@ -1,4 +1,3 @@
-// sumulate getting products from DataBase
 const products = [
   { name: "Apples_:", country: "Italy", cost: 3, instock: 10 },
   { name: "Oranges:", country: "Spain", cost: 4, instock: 3 },
@@ -90,9 +89,9 @@ const Products = (props) => {
   } = ReactBootstrap;
   //  Fetch Data
   const { Fragment, useState, useEffect, useReducer } = React;
-  const [query, setQuery] = useState("http://localhost:1337/products");
+  const [query, setQuery] = useState("http://localhost:1337/api/products");
   const [{ data, isLoading, isError }, doFetch] = useDataApi(
-    "http://localhost:1337/products",
+    "http://localhost:1337/api/products",
     {
       data: [],
     }
@@ -207,7 +206,7 @@ const Products = (props) => {
       <Row>
         <form
           onSubmit={(event) => {
-            restockProducts(`http://localhost:1337/${query}`);
+            restockProducts(`http://localhost:1337/api/products/${query}`);
             console.log(`Restock called on ${query}`);
             event.preventDefault();
           }}
